@@ -53,3 +53,73 @@ class Mental_Health_Survey(models.Model):
 
     def __str__(self):
         return self.id
+    
+class Heart_Health_Survey(models.Model):
+    id = models.AutoField(primary_key=True)
+    age = models.IntegerField()
+    gender = models.CharField(max_length=20)
+    chest_pain = models.CharField(max_length=20)
+    resting_blood_pressure = models.IntegerField()
+    serum_cholesterol = models.IntegerField()
+    high_fasting_blood_sugar = models.CharField(max_length=5)
+    resting_ecg = models.CharField(max_length=5)
+    max_heart_rate = models.CharField(max_length=20)
+    exercise_induced_angina = models.CharField(max_length=5)
+    st_depression = models.CharField(max_length=20)
+    peak_exercise_st_slope = models.CharField(max_length=20)
+    colored_vessels = models.CharField(max_length=5)
+    thalassemia_type = models.CharField(max_length=20)
+
+    def __str__(self):
+        return str(self.id)
+    
+class Diabetes_Survey(models.Model):
+    id = models.AutoField(primary_key=True)
+    pregnancies = models.IntegerField()
+    glucose_level = models.IntegerField()
+    blood_pressure = models.CharField(max_length=20)
+    skin_thickness = models.IntegerField()
+    insulin_level = models.IntegerField()
+    bmi = models.FloatField()
+    diabetes_pedigree = models.FloatField()
+    age = models.IntegerField()
+
+    def __str__(self):
+        return str(self.id)
+    
+class Brain_Tumor_Survey(models.Model):
+    id = models.AutoField(primary_key=True)
+    brain_tumor_diagnosis = models.CharField(max_length=3, choices=[("yes", "Yes"), ("no", "No")])
+    mean_radius = models.CharField(max_length=255)
+    mean_texture = models.CharField(max_length=255)
+    mean_perimeter = models.CharField(max_length=255)
+    mean_area = models.CharField(max_length=255)
+    smoothness = models.CharField(max_length=255)
+    mean_compactness = models.CharField(max_length=255)
+    concavity = models.CharField(max_length=255)
+    concave_points = models.CharField(max_length=255)
+    symmetry = models.CharField(max_length=255)
+    mean_fractal_dimension = models.CharField(max_length=255)
+    se_radius = models.CharField(max_length=255)
+    se_texture = models.CharField(max_length=255)
+    se_perimeter = models.CharField(max_length=255)
+    se_area = models.CharField(max_length=255)
+    se_smoothness = models.CharField(max_length=255)
+    se_compactness = models.CharField(max_length=255)
+    se_concavity = models.CharField(max_length=255)
+    se_concave_points = models.CharField(max_length=255)
+    se_symmetry = models.CharField(max_length=255)
+    se_fractal_dimension = models.CharField(max_length=255)
+    worst_radius = models.CharField(max_length=255)
+    worst_texture = models.CharField(max_length=255)
+    worst_perimeter = models.CharField(max_length=255)
+    worst_area = models.CharField(max_length=255)
+    worst_smoothness = models.CharField(max_length=255)
+    worst_compactness = models.CharField(max_length=255)
+    worst_concavity = models.CharField(max_length=255)
+    worst_concave_points = models.CharField(max_length=255)
+    worst_symmetry = models.CharField(max_length=255)
+    worst_fractal_dimension = models.CharField(max_length=255)
+
+    def __str__(self):
+        return str(self.id)

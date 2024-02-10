@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 from datetime import datetime
-from MedIQ_Advisor_App.models import Contact, Sign_up, Mental_Health_Survey
+from MedIQ_Advisor_App.models import Contact, Sign_up, Mental_Health_Survey, Heart_Health_Survey, Diabetes_Survey, Brain_Tumor_Survey
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 # Create your views here.
@@ -155,114 +155,142 @@ def emotion_questionnaire_function(request):
 
     return render(request, 'MedIQ_Advisor_App_Template/emotion_questionnaire.html')
 
-def heart_disease_function(request):
+def heart_health_function(request):
     if request.method == 'POST':
         # Retrieve data from the form
         age = request.POST.get('age')
         gender = request.POST.get('gender')
-        self_employed = request.POST.get('selfEmployed')
-        family_history = request.POST.get('familyHistory')
-        mental_health_interference = request.POST.get('mentalHealthInterference')
-        company_size = request.POST.get('companySize')
-        remote_work = request.POST.get('remoteWork')
-        tech_company = request.POST.get('techCompany')
-        mental_health_benefits = request.POST.get('mentalHealthBenefits')
-        know_mental_health_care = request.POST.get('knowMentalHealthCare')
-        discussed_mental_health = request.POST.get('discussedMentalHealth')
-        resources_learn_mental_health = request.POST.get('resourcesLearnMentalHealth')
-        anonymity_protected = request.POST.get('anonymityProtected')
-        medical_leave = request.POST.get('medicalLeave')
-        negative_consequences_mental_health = request.POST.get('negativeConsequencesMentalHealth')
-        negative_consequences_physical_health = request.POST.get('negativeConsequencesPhysicalHealth')
-        discuss_with_coworkers = request.POST.get('discussWithCoworkers')
-        discuss_with_supervisors = request.POST.get('discussWithSupervisors')
-        bring_up_in_interview_mental_health = request.POST.get('bringUpInInterviewMentalHealth')
-        bring_up_in_interview_physical_health = request.POST.get('bringUpInInterviewPhysicalHealth')
-        employer_takes_mental_health_seriously = request.POST.get('employerTakesMentalHealthSeriously')
-        observed_negative_consequences = request.POST.get('observedNegativeConsequences')
+        chest_pain = request.POST.get('chestPain')
+        resting_blood_pressure = request.POST.get('restingBP')
+        serum_cholesterol = request.POST.get('cholesterolLevel')
+        high_fasting_blood_sugar = request.POST.get('highFastingBloodSugar')
+        resting_ecg = request.POST.get('restingECG')
+        max_heart_rate = request.POST.get('maxHeartRate')
+        exercise_induced_angina = request.POST.get('exerciseInducedAngina')
+        st_depression = request.POST.get('stDepression')
+        peak_exercise_st_slope = request.POST.get('peakExerciseSTSlope')
+        colored_vessels = request.POST.get('coloredVessels')
+        thalassemia_type = request.POST.get('thalassemiaType')
 
         # Save the survey data to the database
-        survey_data = Mental_Health_Survey(
+        survey_data = Heart_Health_Survey(
             age=age,
             gender=gender,
-            self_employed=self_employed,
-            family_history=family_history,
-            mental_health_interference=mental_health_interference,
-            company_size=company_size,
-            remote_work=remote_work,
-            tech_company=tech_company,
-            mental_health_benefits=mental_health_benefits,
-            know_mental_health_care=know_mental_health_care,
-            discussed_mental_health=discussed_mental_health,
-            resources_learn_mental_health=resources_learn_mental_health,
-            anonymity_protected=anonymity_protected,
-            medical_leave=medical_leave,
-            negative_consequences_mental_health=negative_consequences_mental_health,
-            negative_consequences_physical_health=negative_consequences_physical_health,
-            discuss_with_coworkers=discuss_with_coworkers,
-            discuss_with_supervisors=discuss_with_supervisors,
-            bring_up_in_interview_mental_health=bring_up_in_interview_mental_health,
-            bring_up_in_interview_physical_health=bring_up_in_interview_physical_health,
-            employer_takes_mental_health_seriously=employer_takes_mental_health_seriously,
-            observed_negative_consequences=observed_negative_consequences
+            chest_pain=chest_pain,
+            resting_blood_pressure=resting_blood_pressure,
+            serum_cholesterol=serum_cholesterol,
+            high_fasting_blood_sugar=high_fasting_blood_sugar,
+            resting_ecg=resting_ecg,
+            max_heart_rate=max_heart_rate,
+            exercise_induced_angina=exercise_induced_angina,
+            st_depression=st_depression,
+            peak_exercise_st_slope=peak_exercise_st_slope,
+            colored_vessels=colored_vessels,
+            thalassemia_type=thalassemia_type
         )
         survey_data.save()
         messages.success(request, "Your data has been recorded!!")
 
-    return render(request, 'MedIQ_Advisor_App_Template/heart_disease.html')
+    return render(request, 'MedIQ_Advisor_App_Template/heart_health.html')
 
 def diabetes_function(request):
     if request.method == 'POST':
         # Retrieve data from the form
+        pregnancies = request.POST.get('pregnancies')
+        glucose_level = request.POST.get('glucoseLevel')
+        blood_pressure = request.POST.get('bloodPressure')
+        skin_thickness = request.POST.get('skinThickness')
+        insulin_level = request.POST.get('insulinLevel')
+        bmi = request.POST.get('bmi')
+        diabetes_pedigree = request.POST.get('diabetesPedigree')
         age = request.POST.get('age')
-        gender = request.POST.get('gender')
-        self_employed = request.POST.get('selfEmployed')
-        family_history = request.POST.get('familyHistory')
-        mental_health_interference = request.POST.get('mentalHealthInterference')
-        company_size = request.POST.get('companySize')
-        remote_work = request.POST.get('remoteWork')
-        tech_company = request.POST.get('techCompany')
-        mental_health_benefits = request.POST.get('mentalHealthBenefits')
-        know_mental_health_care = request.POST.get('knowMentalHealthCare')
-        discussed_mental_health = request.POST.get('discussedMentalHealth')
-        resources_learn_mental_health = request.POST.get('resourcesLearnMentalHealth')
-        anonymity_protected = request.POST.get('anonymityProtected')
-        medical_leave = request.POST.get('medicalLeave')
-        negative_consequences_mental_health = request.POST.get('negativeConsequencesMentalHealth')
-        negative_consequences_physical_health = request.POST.get('negativeConsequencesPhysicalHealth')
-        discuss_with_coworkers = request.POST.get('discussWithCoworkers')
-        discuss_with_supervisors = request.POST.get('discussWithSupervisors')
-        bring_up_in_interview_mental_health = request.POST.get('bringUpInInterviewMentalHealth')
-        bring_up_in_interview_physical_health = request.POST.get('bringUpInInterviewPhysicalHealth')
-        employer_takes_mental_health_seriously = request.POST.get('employerTakesMentalHealthSeriously')
-        observed_negative_consequences = request.POST.get('observedNegativeConsequences')
 
         # Save the survey data to the database
-        survey_data = Mental_Health_Survey(
-            age=age,
-            gender=gender,
-            self_employed=self_employed,
-            family_history=family_history,
-            mental_health_interference=mental_health_interference,
-            company_size=company_size,
-            remote_work=remote_work,
-            tech_company=tech_company,
-            mental_health_benefits=mental_health_benefits,
-            know_mental_health_care=know_mental_health_care,
-            discussed_mental_health=discussed_mental_health,
-            resources_learn_mental_health=resources_learn_mental_health,
-            anonymity_protected=anonymity_protected,
-            medical_leave=medical_leave,
-            negative_consequences_mental_health=negative_consequences_mental_health,
-            negative_consequences_physical_health=negative_consequences_physical_health,
-            discuss_with_coworkers=discuss_with_coworkers,
-            discuss_with_supervisors=discuss_with_supervisors,
-            bring_up_in_interview_mental_health=bring_up_in_interview_mental_health,
-            bring_up_in_interview_physical_health=bring_up_in_interview_physical_health,
-            employer_takes_mental_health_seriously=employer_takes_mental_health_seriously,
-            observed_negative_consequences=observed_negative_consequences
+        survey_data = Diabetes_Survey(
+            pregnancies=pregnancies,
+            glucose_level=glucose_level,
+            blood_pressure=blood_pressure,
+            skin_thickness=skin_thickness,
+            insulin_level=insulin_level,
+            bmi=bmi,
+            diabetes_pedigree=diabetes_pedigree,
+            age=age
         )
         survey_data.save()
         messages.success(request, "Your data has been recorded!!")
 
     return render(request, 'MedIQ_Advisor_App_Template/diabetes.html')
+
+def brain_tumor_function(request):
+    if request.method == 'POST':
+        # Retrieve data from the form
+        brain_tumor_diagnosis = request.POST.get('brainTumorDiagnosis')
+        mean_radius = request.POST.get('meanRadius')
+        mean_texture = request.POST.get('meanTexture')
+        mean_perimeter = request.POST.get('meanPerimeter')
+        mean_area = request.POST.get('meanArea')
+        smoothness = request.POST.get('smoothness')
+        mean_compactness = request.POST.get('meanCompactness')
+        concavity = request.POST.get('concavity')
+        concave_points = request.POST.get('concavePoints')
+        symmetry = request.POST.get('symmetry')
+        mean_fractal_dimension = request.POST.get('meanFractalDimension')
+        se_radius = request.POST.get('seRadius')
+        se_texture = request.POST.get('seTexture')
+        se_perimeter = request.POST.get('sePerimeter')
+        se_area = request.POST.get('seArea')
+        se_smoothness = request.POST.get('seSmoothness')
+        se_compactness = request.POST.get('seCompactness')
+        se_concavity = request.POST.get('seConcavity')
+        se_concave_points = request.POST.get('seConcavePoints')
+        se_symmetry = request.POST.get('seSymmetry')
+        se_fractal_dimension = request.POST.get('seFractalDimension')
+        worst_radius = request.POST.get('worstRadius')
+        worst_texture = request.POST.get('worstTexture')
+        worst_perimeter = request.POST.get('worstPerimeter')
+        worst_area = request.POST.get('worstArea')
+        worst_smoothness = request.POST.get('worstSmoothness')
+        worst_compactness = request.POST.get('worstCompactness')
+        worst_concavity = request.POST.get('worstConcavity')
+        worst_concave_points = request.POST.get('worstConcavePoints')
+        worst_symmetry = request.POST.get('worstSymmetry')
+        worst_fractal_dimension = request.POST.get('worstFractalDimension')
+
+        # Save the survey data to the database
+        survey_data = Brain_Tumor_Survey(
+            brain_tumor_diagnosis=brain_tumor_diagnosis,
+            mean_radius=mean_radius,
+            mean_texture=mean_texture,
+            mean_perimeter=mean_perimeter,
+            mean_area=mean_area,
+            smoothness=smoothness,
+            mean_compactness=mean_compactness,
+            concavity=concavity,
+            concave_points=concave_points,
+            symmetry=symmetry,
+            mean_fractal_dimension=mean_fractal_dimension,
+            se_radius=se_radius,
+            se_texture=se_texture,
+            se_perimeter=se_perimeter,
+            se_area=se_area,
+            se_smoothness=se_smoothness,
+            se_compactness=se_compactness,
+            se_concavity=se_concavity,
+            se_concave_points=se_concave_points,
+            se_symmetry=se_symmetry,
+            se_fractal_dimension=se_fractal_dimension,
+            worst_radius=worst_radius,
+            worst_texture=worst_texture,
+            worst_perimeter=worst_perimeter,
+            worst_area=worst_area,
+            worst_smoothness=worst_smoothness,
+            worst_compactness=worst_compactness,
+            worst_concavity=worst_concavity,
+            worst_concave_points=worst_concave_points,
+            worst_symmetry=worst_symmetry,
+            worst_fractal_dimension=worst_fractal_dimension
+        )
+        survey_data.save()
+        messages.success(request, "Your data has been recorded!!")
+
+    return render(request, 'MedIQ_Advisor_App_Template/brain_tumor.html')

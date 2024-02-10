@@ -11,6 +11,7 @@ urlpatterns = [
     path("home", views.home_function, name='home'),
     path("contact", views.contact_function, name='contact'),
     path("emotion_questionnaire", views.emotion_questionnaire_function, name='emotion_questionnaire'),
-    path("heart_disease", views.heart_disease_function, name='heart_disease'),
+    path("heart_health", views.heart_health_function, name='heart_health'),
     path("diabetes", views.diabetes_function, name='diabetes'),
+    path("brain_tumor", views.brain_tumor_function, name='brain_tumor'),
 ]
